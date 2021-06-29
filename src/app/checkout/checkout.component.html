@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Checkout</h1>
+<h2 mat-dialog-content>Review Cart</h2>
+<mat-grid-list class="grid" cols="2" rowHeight="100px">
+    <mat-grid-tile *ngFor="let item of cartItem">
+        <mat-card-header class="container">
+            <img mat-card-avatar class="example-header-image" [src]="item.image" alt="Photo of a Shiba Inu">
+            <mat-card-title>{{ item.title}}</mat-card-title>
+            <mat-card-subtitle>{{ item.qty }} x {{ item.price | currency:"USD" }}  {{item.qty*item.price | currency:"USD"}}</mat-card-subtitle>
+        </mat-card-header>
+</mat-grid-tile>
+</mat-grid-list>
+<h3 align="end">Total Cost : {{ totalCoat | currency:"USD" }}</h3>
+<app-address-form></app-address-form>

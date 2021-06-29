@@ -1,0 +1,21 @@
+.container {
+    width: 90%;
+    margin-top: 10px;
+}
+
+.grid {
+  border:black 1px solid;
+  border-radius: 5px; 
+  max-height: 350px;
+  overflow: scroll;
+}
+
+.grid::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+.grid {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }

@@ -1,0 +1,37 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <mat-form-field appearance="fill">
+        <mat-label>Products</mat-label>
+        <mat-select name="products">
+          <mat-option  *ngFor="let Product of Products"  [value]="Product.value">
+            <div [routerLink]="['products',Product.value]">
+            {{ Product.value | titlecase}}
+            </div>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-toolbar >Cart</mat-toolbar>
+      <app-cart></app-cart>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>eCom</span>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+    
+  </mat-sidenav-content>
+</mat-sidenav-container>

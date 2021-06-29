@@ -1,0 +1,17 @@
+<div class="grid-container">
+  <mat-grid-list cols="2" rowHeight="200px">
+    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+      <mat-card class="example-card card">
+        <mat-card-header>
+          <mat-card-title>{{ card.title }}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-lg-image class="image" [src]="card.image" [alt]="card.title">
+        <mat-card-subtitle>{{ card.price | currency: 'USD' }}</mat-card-subtitle>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" (click)="addToCart(card)"	>Add to Cart</button>
+          <button mat-stroked-button>View Details</button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

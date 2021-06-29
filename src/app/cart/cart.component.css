@@ -1,0 +1,20 @@
+table {
+    width: 100%;
+  }
+
+  .cart-tab::-webkit-scrollbar {
+    display: none;
+  }
+
+  .cart-tab {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  .cart-tab {
+    width: 100%; max-height: 500px; overflow: scroll;
+  }
+
+  .checkout {
+    width: 100%;
+  }
