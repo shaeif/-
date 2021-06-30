@@ -1,7 +1,8 @@
-import { Component, NgModule } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { ApiService } from '../api.service';
 
 
 
@@ -18,7 +19,9 @@ interface prop {
 
 
 
-export class NavComponent {
+export class NavComponent implements OnInit{
+
+  itemCount: number = 0
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -26,10 +29,14 @@ export class NavComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver,
+              private apiService: ApiService) {}
 
   selectedValue: string;
 
+  ngOnInit() {
+    this.apiService.ping.subscribe(message => this.itemCount += message)
+  }
 
   Products: prop[] = [
     {value: 'all'},

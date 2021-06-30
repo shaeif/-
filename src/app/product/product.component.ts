@@ -5,6 +5,9 @@ import { ActivatedRoute,ActivatedRouteSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ApiService } from '../api.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { DetailsComponent } from '../details/details.component';
 
 interface items {
   category: String,
@@ -39,7 +42,12 @@ export class ProductComponent implements OnInit{
   cards
 
 
-  constructor(private breakpointObserver: BreakpointObserver,public http: HttpClient,private route: ActivatedRoute,private router:Router, private apiService:ApiService) {
+  constructor(private breakpointObserver: BreakpointObserver,
+              public http: HttpClient,
+              private route: ActivatedRoute,
+              private apiService:ApiService,
+              private popUp: MatSnackBar,
+              private dialog: MatDialog) {
     
   }
 
@@ -95,7 +103,20 @@ export class ProductComponent implements OnInit{
   }
 
   addToCart(product: items): void {
-    this.apiService.add(product) 
+    this.apiService.add(product)
+    this.apiService.nextPing(1)
+    this.popUp.open("Item added to cart","😄",{
+      duration: 500,
+      horizontalPosition: 'center',
+      verticalPosition: 'top'
+    })
+  }
+
+  viewDetails(product: card): void{
+    const dialogConfig = new MatDialogConfig();
+      dialogConfig.data = product
+      dialogConfig.width = "400px"
+      this.dialog.open(DetailsComponent,dialogConfig)
   }
   
 

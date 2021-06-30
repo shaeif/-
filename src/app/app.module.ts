@@ -27,6 +27,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms'
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { DetailsComponent } from './details/details.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ProductComponent,
     CartComponent,
     CheckoutComponent,
-    AddressFormComponent
+    AddressFormComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,

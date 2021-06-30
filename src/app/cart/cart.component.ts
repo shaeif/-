@@ -80,7 +80,7 @@ export class CartComponent implements OnInit{
     checkout(e){
       if(e.length === 0){
         this.popUp.open("The Cart is empty","OK",{
-          duration: 5000,
+          duration: 2000,
           horizontalPosition: 'center',
           verticalPosition: 'top'
         })

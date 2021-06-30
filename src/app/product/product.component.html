@@ -9,7 +9,7 @@
         <mat-card-subtitle>{{ card.price | currency: 'USD' }}</mat-card-subtitle>
         <mat-card-actions>
           <button mat-raised-button color="primary" (click)="addToCart(card)"	>Add to Cart</button>
-          <button mat-stroked-button>View Details</button>
+          <button mat-stroked-button (click)="viewDetails(card)">View Details</button>
         </mat-card-actions>
       </mat-card>
     </mat-grid-tile>
